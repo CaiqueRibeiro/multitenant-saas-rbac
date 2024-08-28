@@ -1,0 +1,9 @@
+POST http://localhost:3333/users HTTP/1.1
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDg0MzgzNTUsInN1YiI6Ijc2NjM5MDA4LTU2OWQtNDMxMC1iZTY2LTJiYTJiMDgyZDdjMyJ9.M_QjX75sFJlsvOOE_2FP0sc1g7TpSVdF_J0n5R1UQ5M
+
+{
+  "name": "Caique",
+  "email": "caique@gmail.com",
+  "password": "1234598"
+}

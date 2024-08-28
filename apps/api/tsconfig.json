@@ -2,5 +2,8 @@
     "extends": "@saas/tsconfig/node.json",
     "include": [
         "src/**/*"
+    ],
+    "exclude": [
+        "src/http/test-requests/*"
     ]
 }
