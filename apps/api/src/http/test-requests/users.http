@@ -6,3 +6,19 @@ Content-Type: application/json
   "email": "zezinho_meia_noite@tigrinho.com",
   "password": "1234598"
 }
+
+###
+
+POST http://localhost:3333/sessions/password HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "zezinho_meia_noite@tigrinho.com",
+  "password": "1234598"
+}
+
+###
+
+GET http://localhost:3333/profile HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwZGJmYWRmMS02ZGMwLTRiMzctYjI5MS1hMmM0MDAwMmZhZjYiLCJpYXQiOjE3MjQ5NDMyNTIsImV4cCI6MTcyNTU0ODA1Mn0.UUCtMTQ0SJKDnBkbYmdm3oyrmODUwPtJhzb2LTeU07w
