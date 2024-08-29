@@ -12,7 +12,11 @@ const bodySchema = z.object({
 
 export async function createAccount(app: FastifyInstance) {
     app.withTypeProvider<ZodTypeProvider>().post('/users', {
-        schema: { body: bodySchema }
+        schema: {
+            tags: ['Auth'],
+            summary: 'Create a new account',
+            body: bodySchema
+        }
     }, async (request, reply) => {
         const { name, email, password } = request.body
 
