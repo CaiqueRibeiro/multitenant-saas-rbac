@@ -2,6 +2,8 @@ import type { FastifyInstance } from "fastify"
 import type { ZodTypeProvider } from "fastify-type-provider-zod"
 import { z } from "zod"
 import { prisma } from "@/lib/prisma"
+import { BadRequestError } from "../_errors/bad-request-error"
+import { NotFoundError } from "../_errors/not-found-error"
 
 const userSchema = z.object({
     user: z.object({
@@ -38,7 +40,7 @@ export async function getProfile(app: FastifyInstance) {
         })
 
         if (!user) {
-            return reply.status(400).send({ message: 'User not found.' })
+            throw new NotFoundError('User not found.')
         }
 
 
