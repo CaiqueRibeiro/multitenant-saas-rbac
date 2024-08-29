@@ -15,7 +15,7 @@ const userSchema = z.object({
 export async function getProfile(app: FastifyInstance) {
     app.withTypeProvider<ZodTypeProvider>().get('/profile', {
         schema: {
-            tags: ['User'],
+            tags: ['Auth'],
             summary: 'Get authenticated user profile',
             response: {
                 200: userSchema,
