@@ -3,6 +3,14 @@
     "include": [
         "src/**/*"
     ],
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@/*": [
+                "./src/*"
+            ]
+        }
+    },
     "exclude": [
         "src/http/test-requests/*"
     ]
