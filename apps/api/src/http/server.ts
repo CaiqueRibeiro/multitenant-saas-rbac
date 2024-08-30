@@ -15,6 +15,8 @@ import { getProfile } from './routes/auth/get-profile'
 import { errorHandler } from './error-handler'
 import { requestPasswordRecovery } from './routes/auth/request-password-recovery'
 import { resetPassword } from './routes/auth/reset-password'
+import { authenticateWithGithub } from './routes/auth/authenticate-with-github'
+import { env } from '@saas/env'
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
@@ -38,17 +40,18 @@ app.register(fastifySwaggerUI, {
     routePrefix: '/docs',
 })
 
-app.register(fastifyJwt, { secret: 'my-jwt-secret' })
+app.register(fastifyJwt, { secret: env.JWT_SECRET })
 app.register(fastifyCors)
 
 app.register(createAccount)
 app.register(authenticateWithPassword)
+app.register(authenticateWithGithub)
 app.register(getProfile)
 app.register(requestPasswordRecovery)
 app.register(resetPassword)
 
 app.listen({
-    port: 3333
+    port: env.SERVER_PORT
 }).then(() => {
     console.log('HTTP server running!')
 })
