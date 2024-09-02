@@ -5,7 +5,6 @@ import { organizationSchema } from "@saas/auth"
 import { auth } from "@/http/middlewares/auth"
 import { prisma } from "@/lib/prisma"
 import { UnauthorizedError } from "../_errors/unauthorized-error"
-import { BadRequestError } from "../_errors/bad-request-error"
 import { getUserPermissions } from "@/utils/get-user-permissions"
 
 export async function shutdownOrganization(app: FastifyInstance) {
