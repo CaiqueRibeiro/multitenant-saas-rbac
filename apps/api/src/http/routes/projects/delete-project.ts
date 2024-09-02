@@ -9,14 +9,14 @@ import { getUserPermissions } from "@/utils/get-user-permissions"
 import { NotFoundError } from "../_errors/not-found-error"
 
 export async function deleteProject(app: FastifyInstance) {
-    app.withTypeProvider<ZodTypeProvider>().register(auth).delete('/organizations/:slug/projects/:id', {
+    app.withTypeProvider<ZodTypeProvider>().register(auth).delete('/organizations/:orgZlug/projects/:projectSlug', {
         schema: {
             tags: ['Projects'],
             summary: 'Deletes a project',
             security: [{ bearerAuth: [] }],
             params: z.object({
-                slug: z.string(),
-                id: z.string().uuid(),
+                orgZlug: z.string(),
+                projectSlug: z.string(),
             }),
             response: {
                 204: z.null(),
@@ -24,12 +24,12 @@ export async function deleteProject(app: FastifyInstance) {
         }
     }, async (request, reply) => {
         const userId = await request.getCurrentUserId()
-        const { slug, id } = request.params
-        const { membership, organization } = await request.getUserMembership(slug)
+        const { orgZlug, projectSlug } = request.params
+        const { membership, organization } = await request.getUserMembership(orgZlug)
 
         const project = await prisma.project.findUnique({
             where: {
-                id: id,
+                slug: projectSlug,
                 organizationId: organization.id
             }
         })
