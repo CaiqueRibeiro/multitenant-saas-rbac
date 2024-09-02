@@ -24,12 +24,12 @@ export async function deleteProject(app: FastifyInstance) {
         }
     }, async (request, reply) => {
         const userId = await request.getCurrentUserId()
-        const { slug } = request.params
+        const { slug, id } = request.params
         const { membership, organization } = await request.getUserMembership(slug)
 
         const project = await prisma.project.findUnique({
             where: {
-                id: request.params.id,
+                id: id,
                 organizationId: organization.id
             }
         })
