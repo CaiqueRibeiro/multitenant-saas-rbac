@@ -9,7 +9,7 @@ import { getUserPermissions } from "@/utils/get-user-permissions"
 import { NotFoundError } from "../_errors/not-found-error"
 
 export async function updateProject(app: FastifyInstance) {
-    app.withTypeProvider<ZodTypeProvider>().register(auth).delete('/organizations/:orgSlug/projects/:projectSlug', {
+    app.withTypeProvider<ZodTypeProvider>().register(auth).put('/organizations/:orgSlug/projects/:projectSlug', {
         schema: {
             tags: ['Projects'],
             summary: 'Updates a project',
