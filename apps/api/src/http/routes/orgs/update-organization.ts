@@ -9,7 +9,7 @@ import { BadRequestError } from "../_errors/bad-request-error"
 import { getUserPermissions } from "@/utils/get-user-permissions"
 
 export async function updateOrganization(app: FastifyInstance) {
-    app.withTypeProvider<ZodTypeProvider>().register(auth).post('/organizations/:slug', {
+    app.withTypeProvider<ZodTypeProvider>().register(auth).put('/organizations/:slug', {
         schema: {
             tags: ['Organizations'],
             summary: 'Updates an organization',
