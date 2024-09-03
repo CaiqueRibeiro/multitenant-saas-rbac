@@ -39,6 +39,7 @@ import { acceptInvite } from './routes/invites/accept-invite'
 import { rejectInvite } from './routes/invites/reject-invite'
 import { revokeInvite } from './routes/invites/revoke-invite'
 import { getPendingInvites } from './routes/invites/get-pending-invites'
+import { getOrganizationBilling } from './routes/billing/get-organization-billing'
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
@@ -87,6 +88,8 @@ app.register(getOrganizations)
 app.register(updateOrganization)
 app.register(transferOrganization)
 app.register(shutdownOrganization)
+
+app.register(getOrganizationBilling)
 
 app.register(createProject)
 app.register(getProject)
